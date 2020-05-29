@@ -1,6 +1,7 @@
 const Client = require('../models/Client')
 
 module.exports = {
+    // CRIA UM NOVO CLIENTE E O CADASTRA NO BANCO
     async create (req, res) {
         const { nome, email, telefone, cep, logradouro, numero, bairro, cidade, estado } = req.body
 
@@ -26,12 +27,14 @@ module.exports = {
         }
     },
 
+    // LISTA TODOS OS CLIENTES
     async index (req, res) {
         const clients = await Client.find()
 
         return res.json(clients)
     },
 
+    // DELETA UM CLIENTE
     async delete (req, res) {
         const { id } = req.params
 
@@ -42,6 +45,7 @@ module.exports = {
         return res.status(200).send('Cliente deletado com sucesso.')
     },
 
+    // ATUALIZA OS DADOS DE UM CLIENTE
     async update (req, res) {
         const { id } = req.params
         const { nome, email, telefone, cep, logradouro, numero, bairro, cidade, estado } = req.body

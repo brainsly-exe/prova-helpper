@@ -5,6 +5,7 @@ const routes = require('./routes')
 
 const app = express()
 
+// CONEXÃO COM O BANCO MONGODB
 mongoose.connect('mongodb+srv://amorim:12345@cluster0-vougi.mongodb.net/teste-helpper?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true

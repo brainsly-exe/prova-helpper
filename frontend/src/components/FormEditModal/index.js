@@ -6,10 +6,49 @@ import api from '../../services/api'
 import './styles.css'
 
 function FormEditModal({client, id = 'modal', onClose = () => {} }) {
-    
+    const [nome, setNome] = useState('')
+    const [email, setEmail] = useState('')
+    const [telefone, setTelefone] = useState('')
+    const [cep, setCep] = useState('')
+    const [logradouro, setLogradouro] = useState('')
+    const [numero, setNumero] = useState('')
+    const [bairro, setBairro] = useState('')
+    const [cidade, setCidade] = useState('')
+    const [estado, setEstado] = useState('')
+    const idClient = client._id
+
+    // FUNÇÃO PARA FECHAR O MODAL CLICANDO FORA DELE
     function handleOutsideClick(e) {
         if (e.target.id === id) {
             onClose()
+        }
+    }
+
+    // ATUALIZA OS DADOS DO CLIENTE
+    async function handleUpdateClient(e) {
+        e.preventDefault()
+        
+        try {
+            const data = {
+                nome,
+                email,
+                telefone,
+                cep,
+                logradouro,
+                numero,
+                bairro,
+                cidade,
+                estado
+            }
+    
+            await api.put(`/clients/${idClient}`, data)
+    
+            alert('Cliente atualizado com sucesso.')
+            
+            onClose()
+        
+        }catch(err) {
+            alert('Ocorreu um erro ao atualizar o cliente, tente novamente.')
         }
     }
 
@@ -21,16 +60,80 @@ function FormEditModal({client, id = 'modal', onClose = () => {} }) {
                 </button>
                 <div className="content">
                     <h1 className="title-form">Editar cliente</h1>
-                    <form>
-                        <input type="text" name="nome" placeholder="Nome" defaultValue={client.nome}/>
-                        <input type="email" name="email" placeholder="E-mail" defaultValue={client.email}/>
-                        <input type="text" name="telefone" placeholder="Telefone" defaultValue={client.telefone}/>
-                        <input type="text" name="cep" placeholder="CEP" defaultValue={client.cep}/>
-                        <input type="text" name="logradouro" placeholder="Logradouro" defaultValue={client.logradouro}/>
-                        <input type="text" name="numero" placeholder="Número" defaultValue={client.numero}/>
-                        <input type="text" name="bairro" placeholder="Bairro" defaultValue={client.bairro}/>
-                        <input type="text" name="cidade" placeholder="Cidade" defaultValue={client.cidade}/>
-                        <input type="text" name="estado" placeholder="Estado" defaultValue={client.estado}/>
+
+                    <form onSubmit={handleUpdateClient}>
+
+                        <input
+                        required
+                        type="text" 
+                        placeholder="Nome" 
+                        value={nome}
+                        onChange={e => setNome(e.target.value)}
+                        />
+
+                        <input
+                        required
+                        type="email" 
+                        placeholder="E-mail" 
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
+                        />
+
+                        <input
+                        required
+                        type="text" 
+                        placeholder="Telefone" 
+                        value={telefone}
+                        onChange={e => setTelefone(e.target.value)}
+                        />
+
+                        <input
+                        required
+                        type="text" 
+                        placeholder="CEP" 
+                        value={cep}
+                        onChange={e => setCep(e.target.value)}
+                        />
+
+                        <input
+                        required
+                        type="text" 
+                        placeholder="Logradouro" 
+                        value={logradouro}
+                        onChange={e => setLogradouro(e.target.value)}
+                        />
+
+                        <input
+                        required
+                        type="text" 
+                        placeholder="Número" 
+                        value={numero}
+                        onChange={e => setNumero(e.target.value)}
+                        />
+
+                        <input
+                        required
+                        type="text" 
+                        placeholder="Bairro" 
+                        value={bairro}
+                        onChange={e => setBairro(e.target.value)}
+                        />
+
+                        <input
+                        required
+                        type="text" 
+                        placeholder="Cidade" 
+                        value={cidade}
+                        onChange={e => setCidade(e.target.value)}
+                        />
+
+                        <input
+                        required
+                        type="text" 
+                        placeholder="Estado" 
+                        value={estado}
+                        onChange={e => setEstado(e.target.value)}
+                        />
 
                         <button className="btn-submit" type="submit">Salvar</button>
                     </form>

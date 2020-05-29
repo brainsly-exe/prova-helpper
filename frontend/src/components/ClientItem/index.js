@@ -7,11 +7,15 @@ import api from '../../services/api'
 
 import './styles.css'
 
-function ClientItem() {
+function ClientItem({ refresh }) {
     const [isModalVisible, setIsModalVisible] = useState(false)
 
     const [clients, setClients] = useState([])
+    
+    // SETA O USUÁRIO SELECIONADO PARA EDIÇÃO
+    const [selectedClient, setSelectedClient] = useState('')
 
+    // LISTAGEM DOS CLIENTES
     useEffect(() => {
         async function loadClients() {
             const response = await api.get('/clients')
@@ -20,7 +24,21 @@ function ClientItem() {
         }
 
         loadClients()
-    },[])
+    },[refresh, isModalVisible])
+
+    // DELETAR CLIENTE
+    async function handleDeleteClient(id) {
+        try {
+            await api.delete(`/clients/${id}`)
+    
+            setClients(clients.filter(client => client._id !== id))
+
+            alert('Cliente deletado com sucesso.')
+        
+        }catch(err) {
+            alert('Ocorreu um erro ao deletar o cliente, tente novamente.')
+        }
+    }
 
     return (
         <section className="container-clients">
@@ -41,12 +59,12 @@ function ClientItem() {
                     </div>
 
                     <div className="button-group">
-                        <button title="Editar" onClick={() => setIsModalVisible(true)}>
+                        <button title="Editar" onClick={() => setIsModalVisible(true)} onMouseDown={() => setSelectedClient(client)} >
                             <FiEdit size={18} />
                         </button>
-                        {isModalVisible ? <FormEditModal client={client} onClose={() => setIsModalVisible(false)} /> : null}
+                        {isModalVisible ? <FormEditModal client={selectedClient} onClose={() => setIsModalVisible(false)} /> : null}
 
-                        <button title="Apagar">
+                        <button title="Apagar" onClick={() => handleDeleteClient(client._id)}>
                             <FiTrash2 size={18} />
                         </button>
                     </div>

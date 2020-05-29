@@ -18,7 +18,7 @@ function App() {
       </button>
       {isModalVisible ? <FormNewModal onClose={() => setIsModalVisible(false)} /> : null}
 
-      <ClientItem />
+      <ClientItem refresh={isModalVisible}/>
     </>
   )
 }

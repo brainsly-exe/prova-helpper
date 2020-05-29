@@ -1,0 +1,84 @@
+/* ESTILIZAÇÃO DO MODAL */
+
+.modal {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background: #F0F0F0;
+    color: #333;
+    width: 60%;
+    min-height: 70%;
+    height: auto;
+
+    border-radius: 8px;
+}
+
+.close-modal {
+    border: 0;
+    background: transparent;
+
+    top: 5px;
+    right: calc(-100% + 30px);
+    position: relative;
+
+    cursor: pointer;
+}
+
+/* ESTILIZAÇÃO DO FORMULÁRIO*/
+
+.title-form {
+    text-align: center;
+    font-size: 2rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 20px;
+}
+
+form input {
+    max-width: 400px;
+    width: 60%;
+
+    border: 0;
+    border-bottom: 1px solid #333;
+    padding: 5px;
+    background: transparent;
+    color: #555;
+}
+
+form input + input {
+    margin-top: 15px;
+}
+
+.btn-submit {
+    margin-top: 30px;
+    padding: 15px;
+
+    color: #F0F0F0; 
+    font-weight: bold;
+    
+    background: #0d7c97;
+    border: 0;
+    border-radius: 8px;
+
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
+
+.btn-submit:hover {
+    opacity: 0.8;
+}

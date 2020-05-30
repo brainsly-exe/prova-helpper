@@ -57,7 +57,7 @@ section span {
     margin-left: 220px;
 }
 
-div button {
+.btn-option {
     cursor: pointer;
     background: transparent;
     border: 0;
@@ -65,10 +65,10 @@ div button {
     transition-duration: 0.3s;
 }
 
-div button + button{
+.btn-option + .btn-option{
     margin-left: 10px;
 }
 
-div button:hover {
+.btn-option:hover {
     opacity: 0.5;
 }

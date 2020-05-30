@@ -59,12 +59,12 @@ function ClientItem({ refresh }) {
                     </div>
 
                     <div className="button-group">
-                        <button title="Editar" onClick={() => setIsModalVisible(true)} onMouseDown={() => setSelectedClient(client)} >
+                        <button className="btn-option" title="Editar" onClick={() => setIsModalVisible(true)} onMouseDown={() => setSelectedClient(client)} >
                             <FiEdit size={18} />
                         </button>
                         {isModalVisible ? <FormEditModal client={selectedClient} onClose={() => setIsModalVisible(false)} /> : null}
 
-                        <button title="Apagar" onClick={() => handleDeleteClient(client._id)}>
+                        <button className="btn-option" title="Apagar" onClick={() => handleDeleteClient(client._id)}>
                             <FiTrash2 size={18} />
                         </button>
                     </div>

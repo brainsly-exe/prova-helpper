@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import ClientItem from './components/ClientItem'
 import FormNewModal from './components/FormNewModal'
+import Footer from './components/Footer'
 
 import './global.css'
 import './app.css'
@@ -19,6 +20,7 @@ function App() {
       {isModalVisible ? <FormNewModal onClose={() => setIsModalVisible(false)} /> : null}
 
       <ClientItem refresh={isModalVisible} />
+      <Footer />
     </>
   )
 }

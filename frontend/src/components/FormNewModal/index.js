@@ -42,7 +42,9 @@ function FormNewModal({ id = 'modal', onClose = () => { } }) {
 
             const response = await api.post('/clients', data)
 
-            alert(`Cliente ${response.data} adicionado com sucesso.`)
+            const separateNames = response.data.split(" ")
+
+            alert(`Cliente ${separateNames[0]} adicionado com sucesso.`)
 
             onClose()
 

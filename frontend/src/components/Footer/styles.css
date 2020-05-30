@@ -23,3 +23,9 @@
     font-weight: bold;
     margin-left: 5px;
 }
+
+a {
+    text-decoration: none;
+    color: #000;
+    margin-left: 3px;
+}

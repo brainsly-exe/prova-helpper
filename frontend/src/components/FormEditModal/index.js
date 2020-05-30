@@ -6,15 +6,15 @@ import api from '../../services/api'
 import './styles.css'
 
 function FormEditModal({ client, id = 'modal', onClose = () => { } }) {
-    const [nome, setNome] = useState('')
-    const [email, setEmail] = useState('')
-    const [telefone, setTelefone] = useState('')
-    const [cep, setCep] = useState('')
-    const [logradouro, setLogradouro] = useState('')
-    const [numero, setNumero] = useState('')
-    const [bairro, setBairro] = useState('')
-    const [cidade, setCidade] = useState('')
-    const [estado, setEstado] = useState('')
+    const [nome, setNome] = useState(client.nome)
+    const [email, setEmail] = useState(client.email)
+    const [telefone, setTelefone] = useState(client.telefone)
+    const [cep, setCep] = useState(client.cep)
+    const [logradouro, setLogradouro] = useState(client.logradouro)
+    const [numero, setNumero] = useState(client.numero)
+    const [bairro, setBairro] = useState(client.bairro)
+    const [cidade, setCidade] = useState(client.cidade)
+    const [estado, setEstado] = useState(client.estado)
     const idClient = client._id
 
     // FUNÇÃO PARA FECHAR O MODAL CLICANDO FORA DELE
